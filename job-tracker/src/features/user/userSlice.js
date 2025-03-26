@@ -13,7 +13,7 @@ export const registerUser = createAsyncThunk('user/registerUser', async (user, t
         const response = await customFetch.post('/auth/register', user);
         return response.data;
     } catch (err) {
-        thunkAPI.rejectWithValue(err.response.data.msg)
+        return thunkAPI.rejectWithValue(err.response?.data?.msg || 'Register failed');
     }
 });
 
