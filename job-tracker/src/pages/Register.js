@@ -29,7 +29,9 @@ const Register = () => {
         toast.error('Please provide all values');
         return;
     }
-    if(isMember){
+    console.log(isMember);
+    
+    if(isMember){  
         dispatch(loginUser({email, password }));
         return;
     }
@@ -66,7 +68,7 @@ const Register = () => {
                 handleChange={handleChange}
             />
             <button type='submit' className='btn btn-block' disabled={isLoading}>
-            submit
+                { isLoading ? 'Loading...' : 'submit' }
             </button>
             <p>
                 {values.isMember ? 'Not a member yet?' : 'Already a member?'}
