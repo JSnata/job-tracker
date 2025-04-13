@@ -7,6 +7,6 @@ import FormSelect from "./FormSelect";
 import Job from "./Job";
 import JobsContainer from "./JobsContainer";
 import SearchContainer from "./SearchContainer";
+import JobCardInfo from "./JobCardInfo";
 
-
-export { Logo, FormRow, Navbar, SmallSideBar, BigSidebar, FormSelect, Job, JobsContainer, SearchContainer };
+export { Logo, FormRow, Navbar, SmallSideBar, BigSidebar, FormSelect, Job, JobsContainer, SearchContainer, JobCardInfo };
