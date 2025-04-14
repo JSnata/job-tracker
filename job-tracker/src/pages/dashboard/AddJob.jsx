@@ -2,7 +2,7 @@ import { FormRow, FormSelect } from '../../components';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { handleChange, clearValues, createJob } from '../../features/job/jobSlice';
+import { handleChange, clearValues, createJob, editJob } from '../../features/job/jobSlice';
 
 const AddJob = () => {
   const {
@@ -25,6 +25,10 @@ const AddJob = () => {
       toast.error('please, fill out all fields');
       return;
     }
+    if(isEditing) {
+      dispatch(editJob({jobId: editJobId, job: {position, company, jobLocation, jobType, status}}));
+      return;
+    }
     dispatch(createJob({position, company, jobLocation, jobType, status}))
   }
 
@@ -42,7 +46,7 @@ const AddJob = () => {
         <div className="form-center">
           <FormRow type='text' name='position' value={position} handleChange={handleJobInput}/>
           <FormRow type='text' name='company' value={company} handleChange={handleJobInput}/>
-          <FormRow type='text' name='jobLocation' value={jobLocation} labelText={jobLocation} handleChange={handleJobInput}/>
+          <FormRow type='text' name='jobLocation' value={jobLocation} labelText={'Job Location'} handleChange={handleJobInput}/>
           <FormSelect name='status' value={status} handleChange={handleJobInput} list={statusOptions}/>
           <FormSelect name='jobType' labelText='job type' value={jobType} handleChange={handleJobInput} list={statusOptions}/>
           <div className="btn-container">
