@@ -8,5 +8,8 @@ import Job from "./Job";
 import JobsContainer from "./JobsContainer";
 import SearchContainer from "./SearchContainer";
 import JobCardInfo from "./JobCardInfo";
+import ChartsContainer from "./ChartsContainer";
+import StatsContainer from "./StatsContainer";
+import Loading from "./Loading";
 
-export { Logo, FormRow, Navbar, SmallSideBar, BigSidebar, FormSelect, Job, JobsContainer, SearchContainer, JobCardInfo };
+export { Loading, Logo, FormRow, Navbar, SmallSideBar, BigSidebar, FormSelect, Job, JobsContainer, SearchContainer, JobCardInfo, ChartsContainer, StatsContainer };
