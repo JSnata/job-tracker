@@ -11,5 +11,6 @@ import JobCardInfo from "./JobCardInfo";
 import ChartsContainer from "./ChartsContainer";
 import StatsContainer from "./StatsContainer";
 import Loading from "./Loading";
+import FormRowSelect from "./FormRowSelect";
 
-export { Loading, Logo, FormRow, Navbar, SmallSideBar, BigSidebar, FormSelect, Job, JobsContainer, SearchContainer, JobCardInfo, ChartsContainer, StatsContainer };
+export { Loading, Logo, FormRow, Navbar, SmallSideBar, BigSidebar, FormSelect, Job, JobsContainer, SearchContainer, JobCardInfo, ChartsContainer, StatsContainer, FormRowSelect };
