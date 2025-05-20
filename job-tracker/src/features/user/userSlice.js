@@ -79,10 +79,8 @@ const userSlice = createSlice({
           })
           .addCase(loginUser.pending, (state) => {
             state.isLoading = true;
-            console.log('isloading');
           })
           .addCase(loginUser.fulfilled, (state, { payload }) => {
-            console.log(payload);
             const { user } = payload;
             state.isLoading = false;
             state.user = user;
@@ -91,7 +89,6 @@ const userSlice = createSlice({
           })
           .addCase(loginUser.rejected, (state, { payload }) => {
             state.isLoading = false;
-            console.log('err');
             toast.error(payload);
           })
           .addCase(updateUser.pending, (state, { payload }) => {
@@ -106,7 +103,6 @@ const userSlice = createSlice({
           })
           .addCase(updateUser.rejected, (state, { payload }) => {
             state.isLoading = false;
-            console.log('err');
             toast.error(payload);
           })
       },

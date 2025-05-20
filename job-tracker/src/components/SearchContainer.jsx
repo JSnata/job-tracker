@@ -8,6 +8,7 @@ const SearchContainer = () => {
     useSelector((store) => store.allJobs);
   const { jobTypeOptions, statusOptions } = useSelector((store) => store.job);
   const dispatch = useDispatch();
+  
   const handleSearch = (e) => {
     if (isLoading) return;
     dispatch(handleChange({ name: e.target.name, value: e.target.value }));
@@ -16,6 +17,7 @@ const SearchContainer = () => {
     e.preventDefault();
     dispatch(clearFilters());
   };
+
   return (
     <Wrapper>
       <form className='form'>

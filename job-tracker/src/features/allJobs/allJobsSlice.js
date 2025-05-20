@@ -22,7 +22,15 @@ const initialState = {
 };
 
 export const getAllJobs = createAsyncThunk('allJobs/getJobs', async (_, thunkAPI) => {
-    let url = `/jobs`;
+    const { page, search, searchStatus, searchType, sort } = thunkAPI.getState().allJobs;
+
+    let url = `/jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}&page=${page}`;
+
+    if (search) {
+        url = url + `&search=${search}`;
+    }
+
+    console.log('URL:', url); // ← ОБЯЗАТЕЛЬНО ДО fetch-а
 
     try {
         const response = await customFetch.get(url, {
@@ -30,7 +38,6 @@ export const getAllJobs = createAsyncThunk('allJobs/getJobs', async (_, thunkAPI
                 Authorization: `Bearer ${thunkAPI.getState().user.user.token}`
             }
         })
-        console.log(response.data);
         return response.data;
         
     } catch (error) {
@@ -47,7 +54,6 @@ export const showStats = createAsyncThunk(
                 Authorization: `Bearer ${thunkAPI.getState().user.user.token}`
             }
         });
-        console.log(resp.data);
         return resp.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data.msg);
@@ -66,11 +72,14 @@ const AllJobsSlice = createSlice({
             state.isLoading = false;
         },
         handleChange: (state, { payload: { name, value } }) => {
-            // state.page = 1;
+            state.page = 1;
             state[name] = value;
-          },
+        },
           clearFilters: (state) => {
             return { ...state, ...initialFiltersState };
+        },
+        changePage: (state, { payload }) => {
+            state.page = payload;
         },
     },
     extraReducers: (builder) => {
@@ -81,6 +90,8 @@ const AllJobsSlice = createSlice({
     .addCase(getAllJobs.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.jobs = payload.jobs;
+      state.numOfPages = payload.numOfPages;
+      state.totalJobs = payload.totalJobs;
     })
     .addCase(getAllJobs.rejected, (state, { payload }) => {
       state.isLoading = false;
@@ -101,6 +112,6 @@ const AllJobsSlice = createSlice({
 }
 });
 
-export const { showLoading, hideLoading, handleChange, clearFilters } = AllJobsSlice.actions;
+export const { showLoading, hideLoading, handleChange, clearFilters, changePage } = AllJobsSlice.actions;
 
 export default AllJobsSlice.reducer;

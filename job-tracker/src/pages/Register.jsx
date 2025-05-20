@@ -38,7 +38,6 @@ const Register = () => {
         toast.error('Please provide all values');
         return;
     }
-    console.log(isMember);
     
     if(isMember){  
         dispatch(loginUser({email, password }));
