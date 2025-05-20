@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { clearAllJobsState } from '../allJobs/allJobsSlice';
+import { clearValues } from '../job/jobSlice';
 import { toast } from 'react-toastify';
 import customFetch from '../../utils/axios';
 import { getUserFromLocalStorage, addUserToLocalStorage, removeUserFromLocalStorage } from '../../utils/localStorage';
@@ -42,7 +44,20 @@ export const updateUser = createAsyncThunk('user/updateUser', async (user, thunk
         }
         return thunkAPI.rejectWithValue(err.response?.data?.msg || 'Updating failed');
     }
-})
+});
+
+export const clearStore = createAsyncThunk('user/clearStore', async (message, thunkAPI) => {
+    try {
+        thunkAPI.dispatch(logoutUser(message));
+        // clear jobs value
+        thunkAPI.dispatch(clearAllJobsState());
+        // clear job input values
+        thunkAPI.dispatch(clearValues());
+        return Promise.resolve();
+    } catch (err) {
+     return Promise.reject();
+}}
+);
 
 
 const userSlice = createSlice({
@@ -104,6 +119,9 @@ const userSlice = createSlice({
           .addCase(updateUser.rejected, (state, { payload }) => {
             state.isLoading = false;
             toast.error(payload);
+          })
+          .addCase(clearStore.rejected, () => {
+            toast.error('Error');
           })
       },
 });
