@@ -14,7 +14,7 @@ const BigSidebar = () => {
             : 'sidebar-container show-sidebar'
         }
       >
-        <div className='content'>
+        <div className="content">
           <header>
             <Logo />
           </header>

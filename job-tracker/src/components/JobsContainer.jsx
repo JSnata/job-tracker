@@ -7,7 +7,17 @@ import { getAllJobs } from '../features/allJobs/allJobsSlice';
 import PageButtonContainer from './PageButtonContainer';
 
 const JobsContainer = () => {
-  const { jobs, isLoading, page, totalJobs, numOfPages, search, searchStatus, searchType, sort } = useSelector((store) => store.allJobs);
+  const {
+    jobs,
+    isLoading,
+    page,
+    totalJobs,
+    numOfPages,
+    search,
+    searchStatus,
+    searchType,
+    sort,
+  } = useSelector((store) => store.allJobs);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,9 +26,7 @@ const JobsContainer = () => {
   }, [page, search, searchStatus, searchType, sort]);
 
   if (isLoading) {
-    return (
-        <Loading center/>
-    );
+    return <Loading center />;
   }
 
   if (jobs.length === 0) {
@@ -31,16 +39,16 @@ const JobsContainer = () => {
 
   return (
     <Wrapper>
-    <h5>
-      {totalJobs} job{jobs.length > 1 && 's'} found
-    </h5>
-    <div className='jobs'>
-      {jobs.map((job) => {
-        return <Job key={job._id} {...job} />;
-      })}
-    </div>
-    {numOfPages > 1 && <PageButtonContainer />}
-  </Wrapper>
+      <h5>
+        {totalJobs} job{jobs.length > 1 && 's'} found
+      </h5>
+      <div className="jobs">
+        {jobs.map((job) => {
+          return <Job key={job._id} {...job} />;
+        })}
+      </div>
+      {numOfPages > 1 && <PageButtonContainer />}
+    </Wrapper>
   );
 };
 

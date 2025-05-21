@@ -8,6 +8,6 @@ export const store = configureStore({
   reducer: {
     user: userSlice,
     job: jobSlice,
-    allJobs: allJobsSlice
+    allJobs: allJobsSlice,
   },
 });

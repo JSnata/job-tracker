@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Wrapper = styled.main`
   nav {
@@ -8,6 +8,7 @@ const Wrapper = styled.main`
     height: var(--nav-height);
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .page {
     min-height: calc(100vh - var(--nav-height));
@@ -27,6 +28,11 @@ const Wrapper = styled.main`
   .main-img {
     display: none;
   }
+  .logo {
+    display: flex;
+    align-items: center;
+    max-width: 250px;
+  }
   @media (min-width: 992px) {
     .page {
       grid-template-columns: 1fr 1fr;
@@ -36,5 +42,5 @@ const Wrapper = styled.main`
       display: block;
     }
   }
-`
-export default Wrapper
+`;
+export default Wrapper;
