@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Landing, Error, Register, ProtectedRoute } from './pages';
 import {
   Profile,
@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -32,7 +32,7 @@ function App() {
         <Route path="*" element={<Error />} />
       </Routes>
       <ToastContainer position="top-center" />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
