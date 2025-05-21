@@ -1,6 +1,7 @@
 {
   "name": "job-tracker",
   "version": "0.1.0",
+  "homepage": "https://JSnata.github.io/job-tracker",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
@@ -28,7 +29,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
