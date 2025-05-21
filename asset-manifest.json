@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/job-tracker/static/css/main.42d86f40.css",
+    "main.js": "/job-tracker/static/js/main.0fcaa224.js",
+    "static/media/main.svg": "/job-tracker/static/media/main.6ddd67c6adfaef6a9d8047d8fb79edcc.svg",
+    "static/media/logo.svg": "/job-tracker/static/media/logo.00d7d70c3969aed173fcae8dcaa4c82d.svg",
+    "static/media/error.svg": "/job-tracker/static/media/error.d0341894075856e5e64149fbc6d0911f.svg",
+    "index.html": "/job-tracker/index.html",
+    "main.42d86f40.css.map": "/job-tracker/static/css/main.42d86f40.css.map",
+    "main.0fcaa224.js.map": "/job-tracker/static/js/main.0fcaa224.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42d86f40.css",
+    "static/js/main.0fcaa224.js"
+  ]
+}
